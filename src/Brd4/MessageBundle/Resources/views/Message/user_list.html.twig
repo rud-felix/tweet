@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}message user list{% endblock %}
+
+{% block body %}
+    <h1>message user list</h1>
+    <ul>
+        {# @var message \Brd4\MessageBundle\Entity\Message #}
+        {% for message in messages %}
+            <li>
+                {{ message.text }}
+                {{ message.createdAt|date('d-m-Y H:i') }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

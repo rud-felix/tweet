@@ -1,0 +1,6 @@
+Brd4\UserBundle\Entity\User;
+user:
+    email: user@gmail.com
+    plainPassword: 123456
+    enabled: true
+    roles: ['ROLE_USER']

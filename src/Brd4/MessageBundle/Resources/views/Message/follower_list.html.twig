@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}followers message list{% endblock %}
+
+{% block body %}
+    <h1>followers message list</h1>
+
+    <ul>
+        {# @var message \Brd4\MessageBundle\Entity\Message #}
+        {% for message in messages %}
+            <li>
+                {{ message.text }}
+                <a href="{{ path('brd4_user_view_profile', {'id': message.user.id}) }}">{{ message.user.username }}</a>
+                {{ message.createdAt|date('d-m-Y H:i') }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

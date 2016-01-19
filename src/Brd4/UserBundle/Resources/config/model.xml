@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="brd4.user.model.user.class">Brd4\UserBundle\Entity\User</parameter>
+    </parameters>
+
+    <services>
+        <service
+            id="brd4.user.repository.user"
+            class="Brd4\UserBundle\Repository\UserRepository"
+            factory-service="doctrine.orm.entity_manager"
+            factory-method="getRepository">
+            <argument>%brd4.user.model.user.class%</argument>
+        </service>
+
+    </services>
+
+</container>

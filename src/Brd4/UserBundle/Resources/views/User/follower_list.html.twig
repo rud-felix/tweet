@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Follower list{% endblock %}
+
+{% block body %}
+    <h1>Follower list</h1>
+
+    <ul>
+        {% for follower in followers %}
+            <li>
+                {# @var user \Brd4\UserBundle\Entity\User #}
+                <a href="{{ path('brd4_message_user_list', {'id': follower.id}) }}">{{ follower.username }}</a>
+
+                <a href="{{ path('brd4_user_follow', {'id': follower.id}) }}">un follow</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

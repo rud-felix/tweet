@@ -1,0 +1,15 @@
+brd4_message_add:
+    path:     /message/add
+    defaults: { _controller: Brd4MessageBundle:Message:add }
+
+brd4_message_user_list:
+    path:     /user/message/list
+    defaults: { _controller: Brd4MessageBundle:Message:userList }
+
+brd4_message_search:
+    path:     /message/search
+    defaults: { _controller: Brd4MessageBundle:Message:search }
+
+brd4_message_followers_message_list:
+    path:     /
+    defaults: { _controller: Brd4MessageBundle:Message:followerList }

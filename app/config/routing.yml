@@ -1,2 +1,9 @@
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+brd4_message:
+    resource: "@Brd4MessageBundle/Resources/config/routing.yml"
+
+brd4_user:
+    resource: "@Brd4UserBundle/Resources/config/routing.yml"
+    prefix:   /user

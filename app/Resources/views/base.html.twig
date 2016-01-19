@@ -7,7 +7,42 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <ul>
+        {% if app.user != true %}
+            <li>
+                <a href="{{ path('fos_user_security_login') }}">login</a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_registration_register') }}">registration</a>
+            </li>
+        {% endif %}
+
+        {% if app.user %}
+            <li>
+                <a href="{{ path('brd4_message_followers_message_list') }}">home</a>
+            </li>
+            <li>
+                <a href="{{ path('brd4_user_list') }}">user list</a>
+            </li>
+            <li>
+                <a href="{{ path('brd4_user_followers') }}">followers</a>
+            </li>
+            <li>
+                <a href="{{ path('brd4_message_add') }}">add message</a>
+            </li>
+            <li>
+                <a href="{{ path('brd4_message_user_list') }}">my messages</a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_profile_edit') }}">edit profile</a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_security_logout') }}">logout ( {{ app.user.username }} )</a>
+            </li>
+        {% endif %}
+    </ul>
+
+    {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

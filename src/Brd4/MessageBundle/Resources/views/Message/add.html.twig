@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Message:add{% endblock %}
+
+{% block body %}
+    <h1>Add message</h1>
+
+    <form method="post" action="">
+        {{ form_row(form.text) }}
+        {{ form_rest(form) }}
+
+        <input type="submit" name="submit" value="Add" />
+    </form>
+
+{% endblock %}
