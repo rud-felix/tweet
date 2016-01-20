@@ -32,6 +32,7 @@ class UserController extends BaseController
 
         /** @var User $user */
         $user = $this->getUser();
+
         if ($follower !== $user) {
             $user->addFollower($follower);
 
@@ -43,22 +44,23 @@ class UserController extends BaseController
         return $this->redirectToRoute('brd4_user_list');
     }
 
-    public function listAction()
+    /**
+     * @param $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listAction($page)
     {
         $this->denyAccessUnlessGranted("ROLE_USER");
 
-        // TODO: replace on batch
-        $users = $this->get('brd4.user.repository.user')
-            ->findAllUsers()
+        $pagination = $this->get('brd4.user.repository.user')
+            ->findAllUsers(
+                $id = $this->getUser()->getId(),
+                $page,
+                $count = $this->getParameter('user_list.item.count'))
         ;
 
         return $this->render('@Brd4User/User/user_list.html.twig', [
-            'users' => $users
+            'pagination' => $pagination
         ]);
-    }
-
-    public function viewProfileAction()
-    {
-
     }
 }

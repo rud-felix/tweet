@@ -34,7 +34,7 @@
                 <a href="{{ path('brd4_message_add') }}">add message</a>
             </li>
             <li>
-                <a href="{{ path('brd4_message_user_list') }}">my messages</a>
+                <a href="{{ path('brd4_message_user_list', {'id': app.user.id}) }}">my messages</a>
             </li>
             <li>
                 <a href="{{ path('fos_user_profile_edit') }}">edit profile</a>

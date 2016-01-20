@@ -30,7 +30,11 @@ class Message
     protected $text;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brd4\UserBundle\Entity\User", inversedBy="messages", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(
+     *     targetEntity="Brd4\UserBundle\Entity\User",
+     *     inversedBy="messages",
+     *     cascade={"persist", "remove"}
+     * )
      */
     protected $user;
 

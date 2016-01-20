@@ -3,31 +3,55 @@
 namespace Brd4\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Knp\Component\Pager\Paginator;
 
 class UserRepository extends EntityRepository
 {
-    public function findAllUsers($itemCount = 10)
-    {
-        // TODO: paginate
-//        $paginator  = $this->get('knp_paginator');
-//        $pagination = $paginator->paginate(
-//            $query, /* query NOT result */
-//            $request->query->getInt('page', 1)/*page number*/,
-//            10/*limit per page*/
-//        );
+    /** @var Paginator $paginator */
+    private $paginator;
 
-        return $this->findAll();
+    /**
+     * @param $userId
+     * @param $page
+     * @param $count
+     * @return array
+     */
+    public function findAllUsers($userId, $page, $count)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $query = $qb->add('where',
+            $qb->expr()
+                ->neq('u.id', $userId)
+            )
+            ->orderBy('u.username', 'ASC')
+            ->getQuery()
+
+        ;
+
+        $userPaginate = $this->getPaginator()
+            ->paginate(
+                $query,
+                $page,
+                $count
+            )
+        ;
+
+        return $userPaginate;
     }
 
-    public function findAllFollowers()
+    /**
+     * @param mixed $paginator
+     */
+    public function setPaginator(Paginator $paginator)
     {
-//        $query = $this->createQueryBuilder('u')
-//            ->select('u')
-//            ->orderBy('u.username', 'ASC')
-//            ->leftJoin('f.user', 'u')
-//            ->getQuery()
-//        ;
-//
-//        return $query->getResult();
+        $this->paginator = $paginator;
+    }
+
+    /**
+     * @return Paginator
+     */
+    public function getPaginator()
+    {
+        return $this->paginator;
     }
 }

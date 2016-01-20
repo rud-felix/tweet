@@ -29,15 +29,24 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Brd4\MessageBundle\Entity\Message", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(
+     *     targetEntity="Brd4\MessageBundle\Entity\Message",
+     *     mappedBy="user",
+     *     cascade={"persist", "remove"}
+     * )
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     protected $messages;
 
     /**
      * @ORM\ManyToMany(targetEntity="Brd4\UserBundle\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="user_followers",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="follower_user_id", referencedColumnName="id")}
+     *     joinColumns={
+     *         @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *         @ORM\JoinColumn(name="follower_user_id", referencedColumnName="id")
+     *     }
      * )
      */
     protected $followers;

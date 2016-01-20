@@ -10,7 +10,7 @@
         {% for message in messages %}
             <li>
                 {{ message.text }}
-                <a href="{{ path('brd4_user_view_profile', {'id': message.user.id}) }}">{{ message.user.username }}</a>
+                <a href="{{ path('brd4_message_user_list', {'id': message.user.id}) }}">{{ message.user.username }}</a>
                 {{ message.createdAt|date('d-m-Y H:i') }}
             </li>
         {% endfor %}

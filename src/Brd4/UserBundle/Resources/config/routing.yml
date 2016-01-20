@@ -1,6 +1,9 @@
 brd4_user_list:
-    path:     /list
-    defaults: { _controller: Brd4UserBundle:User:list }
+    path:     /list/{page}
+    defaults: { _controller: Brd4UserBundle:User:list, page: 1 }
+    requirements:
+        _method: GET
+        page: \d+
 
 brd4_user_follow:
     path:     /follow/{id}
@@ -11,7 +14,3 @@ brd4_user_follow:
 brd4_user_followers:
     path:     /followers
     defaults: { _controller: Brd4UserBundle:User:followerList }
-
-brd4_user_view_profile:
-    path:     /profile/{id}
-    defaults: { _controller: Brd4UserBundle:User:viewProfile }
