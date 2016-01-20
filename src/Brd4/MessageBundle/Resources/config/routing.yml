@@ -7,8 +7,10 @@ brd4_message_user_list:
     defaults: { _controller: Brd4MessageBundle:Message:userList }
 
 brd4_message_search:
-    path:     /message/search
-    defaults: { _controller: Brd4MessageBundle:Message:search }
+    path:     /message/search/{page}
+    defaults: { _controller: Brd4MessageBundle:Message:search, page: 1 }
+    requirements:
+        page: \d+
 
 brd4_message_followers_message_list:
     path:     /

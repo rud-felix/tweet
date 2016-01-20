@@ -2,3 +2,25 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Brd4\UserBundle\Entity\User
+
+fos_elastica:
+    clients:
+        default:
+            host: %fos_elastica.host%
+            port: %fos_elastica.port%
+    indexes:
+        search:
+            index_name: app_%kernel.environment%
+            finder: ~
+            client: default
+            types:
+                message:
+                    mappings:
+                        text: ~
+                    persistence:
+                        driver: orm
+                        model: Brd4\MessageBundle\Entity\Message
+                        finder: ~
+                        provider: ~
+                        listener:
+                            immediate: ~

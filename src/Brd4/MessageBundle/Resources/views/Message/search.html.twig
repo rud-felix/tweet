@@ -3,5 +3,34 @@
 {% block title %}Message:search{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Message:search page</h1>
+    <h1>Message:search page</h1>
+
+    <form method="post" action="{{ path('brd4_message_search') }}" novalidate="novalidate">
+        {{ form_row(form.text) }}
+        {{ form_rest(form) }}
+        <input type="submit" value="Search" />
+    </form>
+
+    {% if pagination is not null %}
+        <div class="count">
+            {{ pagination.getTotalItemCount }}
+        </div>
+    {% endif %}
+
+    <ul>
+        {# @var message \Brd4\MessageBundle\Entity\Message #}
+        {% for message in pagination %}
+            <li>
+                {{ message.text }}
+                <a href="{{ path('brd4_user_view_profile', {'id': message.user.id}) }}">{{ message.user }}</a>
+                {{ message.createdAt|date('d-m-Y H:i') }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if pagination is not null %}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% endif %}
 {% endblock %}

@@ -10,6 +10,10 @@
             <tag name="form.type" aliase="brd4_message_add_message"/>
         </service>
 
+        <service id="brd4.message.form.search_message" class="Brd4\MessageBundle\Form\SearchMessageType">
+            <tag name="form.type" aliase="brd4_message_search_message"/>
+        </service>
+
     </services>
 
 </container>

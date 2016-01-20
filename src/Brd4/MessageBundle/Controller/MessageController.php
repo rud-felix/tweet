@@ -4,6 +4,7 @@ namespace Brd4\MessageBundle\Controller;
 
 use Brd4\CommonBundle\Controller\BaseController;
 use Brd4\MessageBundle\Entity\Message;
+use Brd4\MessageBundle\Form\SearchMessageType;
 use Brd4\UserBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -79,8 +80,27 @@ class MessageController extends BaseController
         ]);
     }
 
-    public function searchAction()
+    /**
+     * @param Request $request
+     * @param integer $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function searchAction(Request $request, $page)
     {
+        $this->denyAccessUnlessGranted("ROLE_USER");
 
+        $form = $this->get('form.factory')
+            ->create($this->get('brd4.message.form.search_message'))
+        ;
+        $form->handleRequest($request);
+
+        $text = $form->getData()? $form->getData()->getText(): '';
+
+        $result = $this->get('brd4.message.search')->search($text, $page);
+
+        return $this->render('@Brd4Message/Message/search.html.twig', [
+            'pagination' => $result,
+            'form' => $form->createView()
+        ]);
     }
 }
