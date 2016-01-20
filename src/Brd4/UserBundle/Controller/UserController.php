@@ -4,6 +4,7 @@ namespace Brd4\UserBundle\Controller;
 
 use Brd4\CommonBundle\Controller\BaseController;
 use Brd4\UserBundle\Entity\User;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class UserController extends BaseController
@@ -38,10 +39,35 @@ class UserController extends BaseController
 
             $em = $this->getEntityManager();
             $em->persist($user);
-            $em->flush();
+
+            try {
+                $em->flush();
+            } catch (UniqueConstraintViolationException $e) {
+                // below redirect
+            }
         }
 
         return $this->redirectToRoute('brd4_user_list');
+    }
+
+    /**
+     * @param User $follower
+     * @ParamConverter(name="follower", class="Brd4UserBundle:User")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function unfollowAction(User $follower)
+    {
+        $this->denyAccessUnlessGranted("ROLE_USER");
+
+        /** @var User $user */
+        $user = $this->getUser();
+        $user->removeFollower($follower);
+
+        $em = $this->getEntityManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('brd4_user_followers');
     }
 
     /**
@@ -52,11 +78,11 @@ class UserController extends BaseController
     {
         $this->denyAccessUnlessGranted("ROLE_USER");
 
-        $pagination = $this->get('brd4.user.repository.user')
-            ->findAllUsers(
-                $id = $this->getUser()->getId(),
-                $page,
-                $count = $this->getParameter('user_list.item.count'))
+        $pagination = $this->get('brd4.user.user')
+            ->getUsersWithMarkFollower(
+                $this->getUser(),
+                $page
+            )
         ;
 
         return $this->render('@Brd4User/User/user_list.html.twig', [

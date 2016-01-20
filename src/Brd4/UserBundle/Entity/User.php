@@ -42,10 +42,10 @@ class User extends BaseUser
      * @ORM\ManyToMany(targetEntity="Brd4\UserBundle\Entity\User", cascade={"persist", "remove"})
      * @ORM\JoinTable(name="user_followers",
      *     joinColumns={
-     *         @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true)
      *     },
      *     inverseJoinColumns={
-     *         @ORM\JoinColumn(name="follower_user_id", referencedColumnName="id")
+     *         @ORM\JoinColumn(name="follower_user_id", referencedColumnName="id", unique=true)
      *     }
      * )
      */

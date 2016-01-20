@@ -11,7 +11,7 @@
                 {# @var user \Brd4\UserBundle\Entity\User #}
                 <a href="{{ path('brd4_message_user_list', {'id': follower.id}) }}">{{ follower.username }}</a>
 
-                <a href="{{ path('brd4_user_follow', {'id': follower.id}) }}">un follow</a>
+                <a href="{{ path('brd4_user_unfollow', {'id': follower.id}) }}">unfollow</a>
             </li>
         {% endfor %}
     </ul>

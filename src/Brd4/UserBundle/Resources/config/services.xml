@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="brd4.user.user.class">Brd4\UserBundle\User</parameter>
+    </parameters>
+
+    <services>
+        <service id="brd4.user.user" class="%brd4.user.user.class%">
+            <argument type="service" id="knp_paginator" />
+            <argument type="service" id="brd4.user.repository.user" />
+            <argument>%user_list.item.count%</argument>
+        </service>
+    </services>
+
+</container>

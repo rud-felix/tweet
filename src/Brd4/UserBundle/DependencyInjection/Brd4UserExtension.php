@@ -24,5 +24,6 @@ class Brd4UserExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('model.xml');
+        $loader->load('services.xml');
     }
 }
