@@ -1,43 +1,45 @@
 <div class="header clearfix">
-    <h3 class="text-muted">Twitter v.0.0.1</h3>
+    <h3 class="text-muted">Twitter <small>v.0.0.1</small></h3>
+
     <nav>
+        <ul class="nav nav-pills pull-left">
+            <li role="presentation">
+                <a href="{{ path('brd4_message_followers_message_list') }}">{{ 'home_page'|trans|capitalize }}</a>
+            </li>
+            <li role="presentation">
+                <a href="{{ path('brd4_user_followers') }}">{{ 'followers_page'|trans|capitalize }}</a>
+            </li>
+            <li role="presentation">
+                <a href="{{ path('brd4_message_search') }}">{{ 'search_page'|trans|capitalize }}</a>
+            </li>
+            <li role="presentation">
+                <a href="{{ path('brd4_user_list') }}">{{ 'users_page'|trans|capitalize }}</a>
+            </li>
+            {#<li role="presentation">#}
+            {#<a href="{{ path('brd4_message_add') }}">{{ 'message_add'|trans|capitalize }}</a>#}
+            {#</li>#}
+            {#<li role="presentation">#}
+                {#<a href="{{ path('brd4_message_user_list', {'id': app.user.id}) }}">{{ 'user_messages'|trans|capitalize }}</a>#}
+            {#</li>#}
+        </ul>
         <ul class="nav nav-pills pull-right">
             {% if app.user != true %}
                 <li role="presentation">
-                    <a href="{{ path('fos_user_security_login') }}">Login</a>
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'login'|trans|capitalize }}</a>
                 </li>
                 <li role="presentation">
-                    <a href="{{ path('fos_user_registration_register') }}">Registration</a>
+                    <a href="{{ path('fos_user_registration_register') }}">{{ 'registration'|trans|capitalize }}</a>
                 </li>
             {% endif %}
 
             {% if app.user %}
                 <li role="presentation">
-                    <a href="{{ path('brd4_message_followers_message_list') }}">Wall</a>
+                    <a href="{{ path('fos_user_profile_edit') }}">{{ 'user_profile'|trans|capitalize }}</a>
                 </li>
                 <li role="presentation">
-                    <a href="{{ path('brd4_message_add') }}">Tweet-нуть</a>
-                </li>
-                <li role="presentation">
-                    <a href="{{ path('brd4_message_search') }}">Search</a>
-                </li>
-                <li role="presentation">
-                    <a href="{{ path('brd4_user_followers') }}">Followers</a>
-                </li>
-                <li role="presentation">
-                    <a href="{{ path('brd4_user_list') }}">Users</a>
-                </li>
-                <li role="presentation">
-                    <a href="{{ path('brd4_message_user_list', {'id': app.user.id}) }}">My tweets</a>
-                </li>
-                <li role="presentation">
-                    <a href="{{ path('fos_user_profile_edit') }}">Profile</a>
-                </li>
-                <li role="presentation">
-                    <a href="{{ path('fos_user_security_logout') }}">Logout ( {{ app.user.username }} )</a>
+                    <a href="{{ path('fos_user_security_logout') }}">{{ 'logout'|trans|capitalize }} ( {{ app.user.username }} )</a>
                 </li>
             {% endif %}
         </ul>
     </nav>
 </div>
-

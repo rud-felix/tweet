@@ -101,14 +101,13 @@ class MessageController extends BaseController
             $em->flush();
 
             if ($message->getId()) {
-                return $this->redirectToRoute('brd4_message_user_list', [
-                    'id' => $this->getUser()->getId()
-                ]);
+                return $this->redirectToRoute('brd4_message_followers_message_list');
             }
         }
 
         return $this->render('@Brd4Message/Message/add.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            '_token' => $this->get('fos_user.util.token_generator')->generateToken()
         ]);
     }
 }

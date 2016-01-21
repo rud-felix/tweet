@@ -3,9 +3,11 @@
 {% block title %}followers message list{% endblock %}
 
 {% block body %}
-    <div class="page-header">
-        <h1>Followers message list <small>for 24 hours</small></h1>
-    </div>
+    {#<div class="page-header">#}
+        {#<h1>Followers message list <small>for 24 hours</small></h1>#}
+    {#</div>#}
+
+    {{ render(controller('Brd4MessageBundle:Message:Add')) }}
 
     <ul class="media-list">
         {# @var message \Brd4\MessageBundle\Entity\Message #}
@@ -17,16 +19,18 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading"><a href="{{ path('brd4_message_user_list', {'id': message.user.id}) }}">{{ message.user.username }}</a></h4>
-                    {{ message.createdAt|date('d-m-Y H:i') }}
-                    {{ message.text }}
+                    <h4 class="media-heading">
+                        <a href="{{ path('brd4_message_user_list', {'id': message.user.id}) }}"><small>{{ message.user.username }}</small></a>
+                        - <small>{{ message.createdAt|date('H:i') }}</small>
+                    </h4>
+                    <p>{{ message.text }}<p>
                 </div>
             </li>
         {% endfor %}
     </ul>
 
     {% if pagination is not null %}
-        <div class="navigation text-right">
+        <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
     {% endif %}
