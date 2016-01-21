@@ -37,3 +37,4 @@ assetic:
 braincrafted_bootstrap:
     auto_configure:
         assetic: false
+        knp_paginator: false
