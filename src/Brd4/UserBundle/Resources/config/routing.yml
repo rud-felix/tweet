@@ -12,8 +12,10 @@ brd4_user_follow:
         id: \d+
 
 brd4_user_followers:
-    path:     /followers
-    defaults: { _controller: Brd4UserBundle:User:followerList }
+    path:     /followers/{page}
+    defaults: { _controller: Brd4UserBundle:User:followerList, page: 1 }
+    requirements:
+        id: \d+
 
 brd4_user_unfollow:
     path:     /unfollow/{id}

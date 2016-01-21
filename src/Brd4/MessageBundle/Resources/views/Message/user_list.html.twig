@@ -7,9 +7,13 @@
         <h1>My tweets list<small></small></h1>
     </div>
 
+    {% if pagination is not null %}
+        <h4 class="text-right">Count: {{ pagination.getTotalItemCount }}</h4>
+    {% endif %}
+
     <ul class="media-list">
         {# @var message \Brd4\MessageBundle\Entity\Message #}
-        {% for message in messages %}
+        {% for message in pagination %}
             <li class="media">
                 <div class="media-left">
                     <a href="#">
@@ -24,4 +28,11 @@
             </li>
         {% endfor %}
     </ul>
+
+    {% if pagination is not null %}
+        <div class="navigation text-right">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% endif %}
+
 {% endblock %}

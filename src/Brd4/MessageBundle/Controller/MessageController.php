@@ -12,32 +12,44 @@ class MessageController extends BaseController
 {
     /**
      * @param User $user
+     * @param $page
      * @ParamConverter(name="user", class="Brd4UserBundle:User")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function userListAction(User $user)
+    public function userListAction(User $user, $page)
     {
         $this->denyAccessUnlessGranted("ROLE_USER");
-        $messages = $user->getMessages();
+
+        $pagination = $this->get('knp_paginator')
+            ->paginate(
+                $user->getMessages(),
+                $page,
+                $this->getParameter('user_message.list.item.count')
+            );
 
         return $this->render('@Brd4Message/Message/user_list.html.twig', [
-            'messages' => $messages
+            'pagination' => $pagination
         ]);
     }
 
     /**
+     * @param $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function followerListAction()
+    public function followerListAction($page)
     {
         $this->denyAccessUnlessGranted("ROLE_USER");
 
-        $messages = $this->get('brd4.message.repository.message')
-            ->findFollowersMessages($this->getUser())
+        $pagination = $this->get('brd4.message.repository.message')
+            ->findFollowersMessages(
+                $this->getUser(),
+                $page,
+                $this->getParameter('followers_mgs.item.count')
+            )
         ;
 
         return $this->render('@Brd4Message/Message/follower_list.html.twig', [
-            'messages' => $messages
+            'pagination' => $pagination
         ]);
     }
 

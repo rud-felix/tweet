@@ -3,10 +3,11 @@ brd4_message_add:
     defaults: { _controller: Brd4MessageBundle:Message:add }
 
 brd4_message_user_list:
-    path:     /user/{id}/message/list
-    defaults: { _controller: Brd4MessageBundle:Message:userList }
+    path:     /user/{id}/message/list/{page}
+    defaults: { _controller: Brd4MessageBundle:Message:userList, page: 1 }
     requirements:
         id: \d+
+        page: \d+
 
 brd4_message_search:
     path:     /message/search/{page}
@@ -15,5 +16,7 @@ brd4_message_search:
         page: \d+
 
 brd4_message_followers_message_list:
-    path:     /
-    defaults: { _controller: Brd4MessageBundle:Message:followerList }
+    path:     /{page}
+    defaults: { _controller: Brd4MessageBundle:Message:followerList, page: 1 }
+    requirements:
+        page: \d+

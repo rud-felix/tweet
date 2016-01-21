@@ -1,19 +1,22 @@
 parameters:
-    database_host:          127.0.0.1
-    database_port:          ~
-    database_name:          symfony
-    database_user:          root
-    database_password:      ~
+    database_host:                  127.0.0.1
+    database_port:                  ~
+    database_name:                  symfony
+    database_user:                  root
+    database_password:              ~
 
-    mailer_transport:       smtp
-    mailer_host:            127.0.0.1
-    mailer_user:            ~
-    mailer_password:        ~
+    mailer_transport:               smtp
+    mailer_host:                    127.0.0.1
+    mailer_user:                    ~
+    mailer_password:                ~
 
-    secret:                 ThisTokenIsNotSoSecretChangeIt
+    secret:                         ThisTokenIsNotSoSecretChangeIt
 
-    fos_elastica.host:      localhost
-    fos_elastica.port:      9200
+    fos_elastica.host:              localhost
+    fos_elastica.port:              9200
 
-    search.item.count:      10
-    user_list.item.count:   10
+    search.item.count:              10
+    user_list.item.count:           10
+    followers_mgs.item.count:       10
+    followers_list.item.count:      10
+    user_message.list.item.count:   10

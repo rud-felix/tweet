@@ -16,7 +16,7 @@ class MessageRepository extends EntityRepository
      * @param User $user
      * @return array
      */
-    public function findFollowersMessages(User $user)
+    public function findFollowersMessages(User $user, $page, $count)
     {
         $followers[] = $user->getId();
 
@@ -38,7 +38,15 @@ class MessageRepository extends EntityRepository
             ->getQuery()
         ;
 
-        return $query->getResult($hydrationMode = AbstractQuery::HYDRATE_ARRAY);
+        $massagePaginate = $this->getPaginator()
+            ->paginate(
+                $query,
+                $page,
+                $count
+            )
+        ;
+
+        return $massagePaginate;
     }
 
     /**

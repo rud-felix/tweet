@@ -8,9 +8,7 @@
     </div>
 
     {% if pagination is not null %}
-        <div class="count">
-            Count: {{ pagination.getTotalItemCount }}
-        </div>
+        <h4 class="text-right">Count: {{ pagination.getTotalItemCount }}</h4
     {% endif %}
 
     <ul class="media-list">

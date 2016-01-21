@@ -9,7 +9,7 @@
 
     <ul class="media-list">
         {# @var message \Brd4\MessageBundle\Entity\Message #}
-        {% for message in messages %}
+        {% for message in pagination %}
             <li class="media">
                 <div class="media-left">
                     <a href="#">
@@ -24,5 +24,11 @@
             </li>
         {% endfor %}
     </ul>
+
+    {% if pagination is not null %}
+        <div class="navigation text-right">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    {% endif %}
 
 {% endblock %}

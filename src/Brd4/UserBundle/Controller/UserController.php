@@ -9,16 +9,26 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class UserController extends BaseController
 {
-    public function followerListAction()
+    /**
+     * @param $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function followerListAction($page)
     {
         $this->denyAccessUnlessGranted("ROLE_USER");
 
         /** @var User $user */
         $user = $this->getUser();
-        $followers = $user->getFollowers();
+        $pagination = $this->get('knp_paginator')
+            ->paginate(
+                $user->getFollowers(),
+                $page,
+                $this->getParameter('followers_list.item.count')
+            )
+        ;
 
         return $this->render('@Brd4User/User/follower_list.html.twig', [
-            'followers' => $followers
+            'pagination' => $pagination
         ]);
     }
 
