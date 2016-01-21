@@ -1,9 +1,11 @@
-{% extends "::base.html.twig" %}
+{% extends "@Brd4Common/layout.html.twig" %}
 
 {% block title %}User:list{% endblock %}
 
 {% block body %}
-    <h1>User:list page</h1>
+    <div class="page-header">
+        <h1>All users <small>in system</small></h1>
+    </div>
 
     {% if pagination is not null %}
         <div class="count">
@@ -11,16 +13,24 @@
         </div>
     {% endif %}
 
-    <ul>
+    <ul class="media-list">
+        {# @var user \Brd4\UserBundle\Entity\User #}
         {% for user in pagination %}
-            <li>
-                {# @var user \Brd4\UserBundle\Entity\User #}
-                <a href="{{ path('brd4_message_user_list', {'id': user.id}) }}">{{ user.username }}</a>
-                {% if user.isFollow is defined and user.isFollow %}
-                    <a href="{{ path('brd4_user_unfollow', {'id': user.id}) }}">unfollow</a>
-                {% else %}
-                    <a href="{{ path('brd4_user_follow', {'id': user.id}) }}">follow</a>
-                {% endif %}
+            <li class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTI2MzA1ZGU2ZSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MjYzMDVkZTZlIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi44Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4><a href="{{ path('brd4_message_user_list', {'id': user.id}) }}">{{ user.username }}</a></h4>
+
+                    {% if user.isFollow is defined and user.isFollow %}
+                        <a href="{{ path('brd4_user_unfollow', {'id': user.id}) }}">unfollow</a>
+                    {% else %}
+                        <a href="{{ path('brd4_user_follow', {'id': user.id}) }}">follow</a>
+                    {% endif %}
+                </div>
             </li>
         {% endfor %}
     </ul>

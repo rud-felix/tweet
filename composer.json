@@ -20,7 +20,12 @@
         "gedmo/doctrine-extensions": "^2.4",
         "doctrine/doctrine-bundle": "^1.6",
         "knplabs/knp-paginator-bundle": "^2.5",
-        "friendsofsymfony/elastica-bundle": "^3.1"
+        "friendsofsymfony/elastica-bundle": "^3.1",
+        "symfony/assetic-bundle": "^2.7",
+        "braincrafted/bootstrap-bundle": "dev-master",
+        "oyejorge/less.php": "~1.5",
+        "twbs/bootstrap": "^3.3@dev",
+        "jquery/jquery":  "1.11.*"
     },
     "minimum-stability": "dev",
     "require-dev": {
@@ -28,6 +33,19 @@
         "symfony/phpunit-bridge": "~2.7",
         "hautelook/alice-bundle": "^0.2.0"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.11.1",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.11.1.js",
+                    "type": "file"
+                }
+            }
+        }
+    ],
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

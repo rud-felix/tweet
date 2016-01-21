@@ -5,47 +5,19 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {#<!-- Latest compiled and minified CSS -->#}
+        {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">#}
+
+        {#<!-- Optional theme -->#}
+        {#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">#}
+
+        {#<!-- Latest compiled and minified JavaScript -->#}
+        {#<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>#}
+
     </head>
     <body>
-    <ul>
-        {% if app.user != true %}
-            <li>
-                <a href="{{ path('fos_user_security_login') }}">login</a>
-            </li>
-            <li>
-                <a href="{{ path('fos_user_registration_register') }}">registration</a>
-            </li>
-        {% endif %}
-
-        {% if app.user %}
-            <li>
-                <a href="{{ path('brd4_message_followers_message_list') }}">home</a>
-            </li>
-            <li>
-                <a href="{{ path('brd4_message_search') }}">search</a>
-            </li>
-            <li>
-                <a href="{{ path('brd4_user_list') }}">user list</a>
-            </li>
-            <li>
-                <a href="{{ path('brd4_user_followers') }}">followers</a>
-            </li>
-            <li>
-                <a href="{{ path('brd4_message_add') }}">add message</a>
-            </li>
-            <li>
-                <a href="{{ path('brd4_message_user_list', {'id': app.user.id}) }}">my messages</a>
-            </li>
-            <li>
-                <a href="{{ path('fos_user_profile_edit') }}">edit profile</a>
-            </li>
-            <li>
-                <a href="{{ path('fos_user_security_logout') }}">logout ( {{ app.user.username }} )</a>
-            </li>
-        {% endif %}
-    </ul>
-
-    {% block body %}{% endblock %}
+        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

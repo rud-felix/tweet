@@ -5,9 +5,13 @@ namespace Brd4\MessageBundle\Repository;
 use Brd4\UserBundle\Entity\User;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityRepository;
+use Knp\Component\Pager\Paginator;
 
 class MessageRepository extends EntityRepository
 {
+    /** @var Paginator $paginator */
+    private $paginator;
+
     /**
      * @param User $user
      * @return array
@@ -35,5 +39,21 @@ class MessageRepository extends EntityRepository
         ;
 
         return $query->getResult($hydrationMode = AbstractQuery::HYDRATE_ARRAY);
+    }
+
+    /**
+     * @param mixed $paginator
+     */
+    public function setPaginator(Paginator $paginator)
+    {
+        $this->paginator = $paginator;
+    }
+
+    /**
+     * @return Paginator
+     */
+    public function getPaginator()
+    {
+        return $this->paginator;
     }
 }

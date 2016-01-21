@@ -1,0 +1,43 @@
+<div class="header clearfix">
+    <h3 class="text-muted">Twitter v.0.0.1</h3>
+    <nav>
+        <ul class="nav nav-pills pull-right">
+            {% if app.user != true %}
+                <li role="presentation">
+                    <a href="{{ path('fos_user_security_login') }}">Login</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('fos_user_registration_register') }}">Registration</a>
+                </li>
+            {% endif %}
+
+            {% if app.user %}
+                <li role="presentation">
+                    <a href="{{ path('brd4_message_followers_message_list') }}">Wall</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_message_add') }}">Tweet-нуть</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_message_search') }}">Search</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_user_followers') }}">Followers</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_user_list') }}">Users</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_message_user_list', {'id': app.user.id}) }}">My tweets</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('fos_user_profile_edit') }}">Profile</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('fos_user_security_logout') }}">Logout ( {{ app.user.username }} )</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
