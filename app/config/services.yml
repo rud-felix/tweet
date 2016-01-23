@@ -1,9 +1,13 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
+    sleepness.shifter.class: Sleepness\Shifter
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    sleepness.shifter:
+        class: %sleepness.shifter.class%
+
+#    jms_serializer.object_constructor:
+#        alias: jms_serializer.doctrine_object_constructor
+#        public: false
+#
+#    jms_serializer.naming_strategy:
+#        class: 'JMS\Serializer\Naming\IdenticalPropertyNamingStrategy'

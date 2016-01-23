@@ -7,3 +7,12 @@ brd4_message:
 brd4_user:
     resource: "@Brd4UserBundle/Resources/config/routing.yml"
     prefix:   /user
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+brd4_api:
+    type: rest
+    resource: "api.yml"
+    prefix:   /api

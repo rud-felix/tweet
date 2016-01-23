@@ -3,25 +3,28 @@
 
     <nav>
         <ul class="nav nav-pills pull-left">
-            <li role="presentation">
-                <a href="{{ path('brd4_message_followers_message_list') }}">{{ 'home_page'|trans|capitalize }}</a>
-            </li>
-            <li role="presentation">
-                <a href="{{ path('brd4_user_followers') }}">{{ 'followers_page'|trans|capitalize }}</a>
-            </li>
-            <li role="presentation">
-                <a href="{{ path('brd4_message_search') }}">{{ 'search_page'|trans|capitalize }}</a>
-            </li>
-            <li role="presentation">
-                <a href="{{ path('brd4_user_list') }}">{{ 'users_page'|trans|capitalize }}</a>
-            </li>
-            {#<li role="presentation">#}
-            {#<a href="{{ path('brd4_message_add') }}">{{ 'message_add'|trans|capitalize }}</a>#}
-            {#</li>#}
-            {#<li role="presentation">#}
+            {% if app.user %}
+                <li role="presentation">
+                    <a href="{{ path('brd4_message_followers_message_list') }}">{{ 'home_page'|trans|capitalize }}</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_user_followers') }}">{{ 'followers_page'|trans|capitalize }}</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_message_search') }}">{{ 'search_page'|trans|capitalize }}</a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ path('brd4_user_list') }}">{{ 'users_page'|trans|capitalize }}</a>
+                </li>
+                {#<li role="presentation">#}
+                {#<a href="{{ path('brd4_message_add') }}">{{ 'message_add'|trans|capitalize }}</a>#}
+                {#</li>#}
+                {#<li role="presentation">#}
                 {#<a href="{{ path('brd4_message_user_list', {'id': app.user.id}) }}">{{ 'user_messages'|trans|capitalize }}</a>#}
-            {#</li>#}
+                {#</li>#}
+            {% endif %}
         </ul>
+
         <ul class="nav nav-pills pull-right">
             {% if app.user != true %}
                 <li role="presentation">

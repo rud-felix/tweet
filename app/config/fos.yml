@@ -24,3 +24,21 @@ fos_elastica:
                         provider: ~
                         listener:
                             immediate: ~
+
+fos_rest:
+    body_converter:
+        enabled: true
+        validate: true
+    service:
+        serializer: jms_serializer
+    param_fetcher_listener: force
+    body_listener: true
+    view:
+        serialize_null: true
+        view_response_listener: true
+        mime_types:
+            json: ['application/json; charset=UTF-8', 'application/json']
+    format_listener:
+        rules:
+            - { path: ^/api, priorities: [json], fallback_format: 'json', prefer_extension: true }
+            - { path: ^/, priorities: ['html', '*/*'], fallback_format: html, prefer_extension: false }

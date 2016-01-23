@@ -1,0 +1,9 @@
+Brd4\MessageBundle\Model\UserMessage:
+    exclusion_policy: All
+    properties:
+        id:
+            expose: true
+        text:
+            expose: true
+        createdAt:
+            expose: false

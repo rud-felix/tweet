@@ -1,0 +1,7 @@
+brd4_message_api_v1_user_list:
+    path:     /users/{id}/messages/{page}
+    defaults: { _controller: Brd4MessageBundle:Api/V1/Api:userMessageList, page: 1 }
+    requirements:
+        _method: GET
+        id: \d+
+        page: \d+

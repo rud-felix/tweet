@@ -25,10 +25,12 @@ class MessageController extends BaseController
                 $user->getMessages(),
                 $page,
                 $this->getParameter('user_message.list.item.count')
-            );
+            )
+        ;
 
         return $this->render('@Brd4Message/Message/user_list.html.twig', [
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'username' => $user->getUsername()
         ]);
     }
 

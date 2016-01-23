@@ -1,0 +1,18 @@
+jms_serializer:
+    visitors:
+        json:
+            options: [JSON_UNESCAPED_SLASHES, JSON_UNESCAPED_UNICODE]
+    metadata:
+        debug: true
+        auto_detection: true
+        directories:
+            Brd4MessageBundle:
+                namespace_prefix: "Brd4\\MessageBundle"
+                path: "@Brd4MessageBundle/Resources/config/serializer/"
+#            FOSUserBundle:
+#                namespace_prefix: "FOS\\UserBundle"
+#                path: "@Brd4UserBundle/Resources/config/serializer"
+
+services:
+    jms_serializer.naming_strategy:
+        class: 'JMS\Serializer\Naming\IdenticalPropertyNamingStrategy'

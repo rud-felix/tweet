@@ -3,10 +3,12 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: doctrine.yml }
+    - { resource: jms_serializer.yml }
     - { resource: fos.yml }
     - { resource: doctrine_extensions.yml }
     - { resource: knp.yml }
     - { resource: assetic.yml }
+    - { resource: nelmio.yml }
 #    - { resource: hautelook.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed

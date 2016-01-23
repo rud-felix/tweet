@@ -4,7 +4,10 @@
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
-        "psr-4": { "": "src/" },
+        "psr-4": {
+            "": "src/",
+            "Sleepness\\": "vendor/sleepness/shifter/"
+        },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "require": {
@@ -25,7 +28,11 @@
         "braincrafted/bootstrap-bundle": "dev-master",
         "oyejorge/less.php": "~1.5",
         "twbs/bootstrap": "^3.3@dev",
-        "jquery/jquery":  "1.11.*"
+        "jquery/jquery":  "1.11.*",
+        "friendsofsymfony/rest-bundle": "@dev",
+        "jms/serializer-bundle": "@dev",
+        "nelmio/api-doc-bundle": "^2.11",
+        "sleepness/shifter": "dev-master"
     },
     "minimum-stability": "dev",
     "require-dev": {
@@ -42,6 +49,23 @@
                 "dist": {
                     "url": "http://code.jquery.com/jquery-1.11.1.js",
                     "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "sleepness/shifter",
+                "version": "dev-master",
+                "source": {
+                    "url": "https://github.com/cystbear/shifter.git",
+                    "type": "git",
+                    "reference": "origin/master"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "Sleepness\\": "vendor/sleepness/shifter/"
+                    }
                 }
             }
         }
@@ -67,7 +91,7 @@
     "config": {
         "bin-dir": "bin",
         "platform": {
-            "php": "5.3.9"
+            "php": "5.5.0"
         }
     },
     "extra": {

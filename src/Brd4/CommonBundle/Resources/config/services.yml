@@ -1,4 +1,0 @@
-services:
-#    brd4_common.example:
-#        class: Brd4\CommonBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
