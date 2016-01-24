@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
 //            new Hautelook\AliceBundle\HautelookAliceBundle(),
             new Brd4\UserBundle\Brd4UserBundle(),
             new Brd4\MessageBundle\Brd4MessageBundle(),
