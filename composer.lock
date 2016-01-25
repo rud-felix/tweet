@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c28c9941f7862c44c2f16d4bd13ec1e3",
-    "content-hash": "c684e0ae2ce025f5e8fc4c93a0e2e72d",
+    "hash": "92c63733ab7f6f8bae4635eedd85e7c7",
+    "content-hash": "e6c2d20a5f88631e7e7f2dc57eee709b",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2708,7 +2708,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/85fe388210bfabd43fb72d145b40c548089df44f",
+                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/d1911e6caeb4b6a4c8e2d5c46b978a66b3745e4c",
                 "reference": "85fe388210bfabd43fb72d145b40c548089df44f",
                 "shasum": ""
             },
@@ -2764,7 +2764,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/6b8efa3e159e2f6b58c2c6a173015b117b7e767e",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/66b0bb4abda229bc073eff6bbc8f2685bdaac165",
                 "reference": "6b8efa3e159e2f6b58c2c6a173015b117b7e767e",
                 "shasum": ""
             },
@@ -2819,7 +2819,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d7f01c96a4dde264682cf36c28e62086c77a09d4",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/1289d16209491b584839022f29257ad859b8532d",
                 "reference": "d7f01c96a4dde264682cf36c28e62086c77a09d4",
                 "shasum": ""
             },
@@ -2878,7 +2878,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/2fc6510fe668493fe6a6ed6c61e03fea88f0ef6b",
+                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/74663d5a2ff3c530c1bc0571500e0feec9094054",
                 "reference": "2fc6510fe668493fe6a6ed6c61e03fea88f0ef6b",
                 "shasum": ""
             },
@@ -2936,7 +2936,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/3bd7c6c6fe7cfa07d1df9aaef799c559433a23ac",
+                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/b4f3f07d91702f8f926339fc4fcf81671d8c27e6",
                 "reference": "3bd7c6c6fe7cfa07d1df9aaef799c559433a23ac",
                 "shasum": ""
             },
@@ -2992,7 +2992,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/00a7781ba12cc2d0f303a845af4d0b7c91f85f07",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/4d891fff050101a53a4caabb03277284942d1ad9",
                 "reference": "00a7781ba12cc2d0f303a845af4d0b7c91f85f07",
                 "shasum": ""
             },
@@ -3048,7 +3048,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/6b102ca141ae58782bfa93a781876c69bfde7ef5",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/8428ceddbbaf102f2906769a8ef2438220c5cb95",
                 "reference": "6b102ca141ae58782bfa93a781876c69bfde7ef5",
                 "shasum": ""
             },
@@ -3107,7 +3107,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/3c73bcdad66642261a08921ca19a78525feb3673",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/8de62801aa12bc4dfcf85eef5d21981ae7bb3cc4",
                 "reference": "3c73bcdad66642261a08921ca19a78525feb3673",
                 "shasum": ""
             },
@@ -3277,7 +3277,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/dc6645593ecf17b1eff624bf48079e8db09fdee6",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/cf1bc50385e517d763e27d3729387c3f89490202",
                 "reference": "295f5ee6264c843a49e6bff27c90e6783ea0921f",
                 "shasum": ""
             },
@@ -3513,6 +3513,44 @@
                 "templating"
             ],
             "time": "2016-01-19 12:28:04"
+        },
+        {
+            "name": "uecode/api-key-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uecode/api-key-bundle.git",
+                "reference": "ba7e3faf37c333f96849ec2f39f0b269b7b416b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uecode/api-key-bundle/zipball/ba7e3faf37c333f96849ec2f39f0b269b7b416b7",
+                "reference": "ba7e3faf37c333f96849ec2f39f0b269b7b416b7",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofsymfony/user-bundle": "~2.0@dev",
+                "php": ">=5.3.0",
+                "symfony/symfony": ">=2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Uecode\\Bundle\\ApiKeyBundle": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Aaron Scherer",
+                    "email": "aequasi@gmail.com"
+                }
+            ],
+            "description": "Creates an avenue for using ApiKey authentication for Symfony2. Requires FOSUserBundle.",
+            "time": "2016-01-14 16:26:37"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -3998,7 +4036,8 @@
         "friendsofsymfony/user-bundle": 20,
         "braincrafted/bootstrap-bundle": 20,
         "twbs/bootstrap": 20,
-        "sleepness/shifter": 20
+        "sleepness/shifter": 20,
+        "uecode/api-key-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

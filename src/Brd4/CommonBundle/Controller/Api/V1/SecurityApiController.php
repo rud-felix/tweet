@@ -3,7 +3,8 @@
 namespace Brd4\CommonBundle\Controller\Api\V1;
 
 use Brd4\CommonBundle\Controller\BaseApiController;
-use Brd4\UserBundle\Entity\User;
+use Brd4\CommonBundle\Model\Credential;
+use Brd4\CommonBundle\Model\Login;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations\View as RestView;
@@ -33,23 +34,28 @@ class SecurityApiController extends BaseApiController
      *  }
      * )
      *
-     * @ParamConverter(name="user", class="Brd4\UserBundle\Entity\User")
+     * @ParamConverter(name="credential", class="Brd4\CommonBundle\Model\Credential")
      *
-     * @param User $user
-     *
+     * @param Credential $credential
      * @RestView
-     *
      * @return View
      */
-    public function loginAction(User $user)
+    public function loginAction(Credential $credential)
     {
         try {
+            $securityManager = $this->get('fos_user.user_manager');
+            $user = $securityManager->loadUserByUsername($credential->username);
 
+            $security = $this->get('security.password_encoder');
+
+            if (!$security->isPasswordValid($user, $credential->password)) {
+                return $this->view([], Codes::HTTP_UNAUTHORIZED);
+            }
         } catch (\Exception $e) {
-            return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
+            return $this->view($e->getMessage(), Codes::HTTP_UNAUTHORIZED);
         }
 
-        return $this->view([], Codes::HTTP_OK);
+        return $this->view(['api-key' => $user->getApiKey()], Codes::HTTP_OK);
     }
 
     /**

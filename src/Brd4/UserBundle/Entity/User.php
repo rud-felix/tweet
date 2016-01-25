@@ -5,13 +5,14 @@ namespace Brd4\UserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Uecode\Bundle\ApiKeyBundle\Model\ApiKeyUser;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Brd4\UserBundle\Repository\UserRepository")
  */
-class User extends BaseUser
+class User extends ApiKeyUser
 {
     public function __construct()
     {
@@ -50,6 +51,11 @@ class User extends BaseUser
      * )
      */
     protected $followers;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $apiKey;
 
     /**
      * Add messages
@@ -115,5 +121,13 @@ class User extends BaseUser
     public function getFollowers()
     {
         return $this->followers;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
     }
 }
