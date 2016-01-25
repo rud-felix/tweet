@@ -5,11 +5,15 @@ namespace Brd4\CommonBundle\Controller\Api\V1;
 use Brd4\CommonBundle\Controller\BaseApiController;
 use Brd4\CommonBundle\Model\Credential;
 use Brd4\CommonBundle\Model\Login;
+use Brd4\CommonBundle\Model\Registration;
+use Brd4\UserBundle\Entity\User;
 use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations\View as RestView;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class SecurityApiController extends BaseApiController
 {
@@ -78,11 +82,34 @@ class SecurityApiController extends BaseApiController
      *  }
      * )
      *
+     * @param Request $request
      * @RestView
      * @return View
      */
-    public function logoutAction()
+    public function logoutAction(Request $request)
     {
+        $extractor = $this->get('uecode.api_key.extractor');
+        if (!$extractor->hasKey($request)) {
+            return $this->view(['error' => 'not_found_api_key'], Codes::HTTP_UNAUTHORIZED);
+        }
+
+        $user = $this->get('brd4.user.repository.user')->findByApiKey($extractor->extractKey($request));
+        if (!$user) {
+            return $this->view(['error' => 'check_api_key'], Codes::HTTP_UNAUTHORIZED);
+        }
+
+        try {
+            $tokenGenerator = $this->get('fos_user.util.token_generator');
+            $user->setApiKey($tokenGenerator->generateToken());
+
+            $em = $this->getEntityManager();
+            $em->persist($user);
+            $em->flush();
+        } catch (\Exception $e) {
+            // TODO: crate error handler
+            return $this->view([], Codes::HTTP_BAD_REQUEST);
+        }
+
         return $this->view([], Codes::HTTP_OK);
     }
 
@@ -108,11 +135,31 @@ class SecurityApiController extends BaseApiController
      *  }
      * )
      *
+     * @ParamConverter(name="registration", class="Brd4\CommonBundle\Model\Registration")
+     * @param Registration $registration
      * @RestView
      * @return View
      */
-    public function registrationAction()
+    public function registrationAction(Registration $registration, ConstraintViolationListInterface $validationErrors)
     {
-        return $this->view([],Codes::HTTP_OK);
+        if (count($validationErrors) > 0) {
+            return $this->view($this->prepareViolationErrors($validationErrors), Codes::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $shifter = $this->get('sleepness.shifter');
+            /** @var User $user */
+            $user = $shifter->fromDto($registration, new User());
+
+            $em = $this->getEntityManager();
+            $em->persist($user);
+            $em->flush();
+
+        } catch (\Exception $e) {
+            // TODO: refactoring errors and add translations
+            return $this->view(['error' => 'check_username_and_email'], Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->view(['api-key' => $user->getApiKey()],Codes::HTTP_OK);
     }
 }

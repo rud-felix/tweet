@@ -3,7 +3,6 @@
 namespace Brd4\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Uecode\Bundle\ApiKeyBundle\Model\ApiKeyUser;
 
@@ -129,5 +128,13 @@ class User extends ApiKeyUser
     public function getApiKey()
     {
         return $this->apiKey;
+    }
+
+    /**
+     * @param string $apiKey
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
     }
 }

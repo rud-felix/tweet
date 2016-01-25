@@ -1,0 +1,12 @@
+Brd4\CommonBundle\Model\Registration:
+    exclusion_policy: All
+    properties:
+        username:
+            expose: true
+            type: string
+        password:
+            expose: true
+            type: string
+        email:
+            expose: true
+            type: string

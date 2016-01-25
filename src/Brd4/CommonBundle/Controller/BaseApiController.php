@@ -24,4 +24,14 @@ class BaseApiController extends FOSRestController
 
         return $errors;
     }
+
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectManager|object
+     */
+    public function getEntityManager()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $em;
+    }
 }

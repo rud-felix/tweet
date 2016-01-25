@@ -54,4 +54,13 @@ class UserRepository extends EntityRepository
     {
         return $this->paginator;
     }
+
+    public function findByApiKey($apiKey)
+    {
+        if ($user = $this->findOneBy(["apiKey" => $apiKey])) {
+            return $user;
+        }
+
+        return false;
+    }
 }
