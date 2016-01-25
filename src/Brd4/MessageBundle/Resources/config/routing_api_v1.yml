@@ -1,7 +1,27 @@
-brd4_message_api_v1_user_list:
-    path:     /users/{id}/messages/{page}
-    defaults: { _controller: Brd4MessageBundle:Api/V1/Api:userMessageList, page: 1 }
+brd4_message_api_v1_user_msg_list:
+    path:     /messages/users/{id}/pages/{page}
+    defaults: { _controller: Brd4MessageBundle:Api/V1/MessageApi:userMessageList, page: 1 }
     requirements:
         _method: GET
         id: \d+
+        page: \d+
+
+brd4_message_api_v1_message_create:
+    path:     /messages
+    defaults: { _controller: Brd4MessageBundle:Api/V1/MessageApi:createMessage}
+    requirements:
+        _method: POST
+
+brd4_message_api_v1_search:
+    path:     /messages/search/pages/{page}/{text}
+    defaults: { _controller: Brd4MessageBundle:Api/V1/MessageApi:search, page: 1 }
+    requirements:
+        _method: GET
+        page: \d+
+
+brd4_message_api_v1_followers_message_list:
+    path:     /messages/followers/pages/{page}
+    defaults: { _controller:  Brd4MessageBundle:Api/V1/MessageApi:followersMessageList, page: 1 }
+    requirements:
+        _method: GET
         page: \d+

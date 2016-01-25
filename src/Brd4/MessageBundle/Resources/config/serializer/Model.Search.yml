@@ -1,0 +1,6 @@
+Brd4\MessageBundle\Model\Search:
+    exclusion_policy: All
+    properties:
+        text:
+            expose: true
+            type: string

@@ -1,2 +1,5 @@
-api_v1_message:
+brd4_message_api_v1:
     resource: "@Brd4MessageBundle/Resources/config/routing_api_v1.yml"
+
+brd4_user_api_v1:
+    resource: "@Brd4UserBundle/Resources/config/routing_api_v1.yml"

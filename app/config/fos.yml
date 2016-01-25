@@ -29,9 +29,10 @@ fos_rest:
     body_converter:
         enabled: true
         validate: true
+        validation_errors_argument: validationErrors
     service:
         serializer: jms_serializer
-    param_fetcher_listener: force
+    param_fetcher_listener: true
     body_listener: true
     view:
         serialize_null: true

@@ -2,7 +2,9 @@
 
 namespace Brd4\MessageBundle\Model;
 
-class UserMessage
+use JMS\Serializer\Annotation\Type;
+
+class Message
 {
     /**
      * @var integer
@@ -15,7 +17,12 @@ class UserMessage
     public $text;
 
     /**
-     * @var string
+     * @Type("DateTime")
      */
     public $createdAt;
+
+    /**
+     * @Type("\Brd4\UserBundle\Model\User")
+     */
+    public $user;
 }

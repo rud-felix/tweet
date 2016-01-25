@@ -1,9 +1,12 @@
-Brd4\MessageBundle\Model\UserMessage:
+Brd4\MessageBundle\Model\Message:
     exclusion_policy: All
     properties:
         id:
             expose: true
         text:
             expose: true
+            type: string
         createdAt:
-            expose: false
+            expose: true
+        user:
+            expose: true

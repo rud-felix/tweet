@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "87ef517e920d2a0d6448d9de0618b59a",
-    "content-hash": "bd71a78fa6fd69ce264340b247323ef8",
+    "hash": "c28c9941f7862c44c2f16d4bd13ec1e3",
+    "content-hash": "c684e0ae2ce025f5e8fc4c93a0e2e72d",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -960,58 +960,50 @@
         },
         {
             "name": "friendsofsymfony/rest-bundle",
-            "version": "1.8.x-dev",
+            "version": "1.5.x-dev",
             "target-dir": "FOS/RestBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "09a39f2fb7594951bcac09d640e9ab66ea04901a"
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/09a39f2fb7594951bcac09d640e9ab66ea04901a",
-                "reference": "09a39f2fb7594951bcac09d640e9ab66ea04901a",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
+                "reference": "fdd21c4c0cb6222ae37efc9362c6a96bd1432412",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "~1.0",
-                "php": "^5.3.9|~7.0",
+                "php": ">=5.3.9",
                 "psr/log": "~1.0",
-                "symfony/framework-bundle": "~2.3|~3.0",
-                "symfony/http-kernel": "^2.3.24|~3.0",
+                "symfony/framework-bundle": "~2.2",
                 "willdurand/jsonp-callback-validator": "~1.0",
                 "willdurand/negotiation": "~1.2"
             },
             "conflict": {
                 "jms/serializer": "<0.12",
-                "jms/serializer-bundle": "<0.11",
-                "symfony/validator": ">=2.5.0,<2.5.5"
+                "jms/serializer-bundle": "<0.11"
             },
             "require-dev": {
-                "jms/serializer": "~0.13|~1.0",
-                "jms/serializer-bundle": "~0.12|~1.0",
-                "phpoption/phpoption": "~1.1.0",
-                "sensio/framework-extra-bundle": "~2.0|~3.0",
-                "sllh/php-cs-fixer-styleci-bridge": "^1.3",
-                "symfony/browser-kit": "~2.3|~3.0",
-                "symfony/dependency-injection": "~2.3|~3.0",
-                "symfony/form": "~2.3|~3.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0",
-                "symfony/security": "~2.3|~3.0",
-                "symfony/serializer": "~2.3|~3.0",
-                "symfony/validator": "~2.3|~3.0",
-                "symfony/yaml": "~2.3|~3.0"
+                "jms/serializer-bundle": "~0.12",
+                "sensio/framework-extra-bundle": "~2.2",
+                "symfony/form": "~2.2",
+                "symfony/security": "~2.2",
+                "symfony/serializer": "~2.2",
+                "symfony/validator": "~2.2",
+                "symfony/yaml": "~2.2"
             },
             "suggest": {
-                "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires ~0.12||~1.0",
-                "sensio/framework-extra-bundle": "Add support for route annotations and the view response listener, requires ~3.0",
-                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.3",
-                "symfony/validator": "Add support for validation capabilities in the ParamFetcher, requires ~2.3"
+                "jms/serializer-bundle": "Add support for advanced serialization capabilities, recommended, requires ~0.12",
+                "sensio/framework-extra-bundle": "Add support for route annotations and the view response listener",
+                "symfony/serializer": "Add support for basic serialization capabilities and xml decoding, requires ~2.2",
+                "symfony/validator": "Add support for validation capabilities in the ParamFetcher, requires ~2.2"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -1037,12 +1029,12 @@
                     "email": "ever.zet@gmail.com"
                 }
             ],
-            "description": "This Bundle provides various tools to rapidly develop RESTful API's with Symfony",
+            "description": "This Bundle provides various tools to rapidly develop RESTful API's with Symfony2",
             "homepage": "http://friendsofsymfony.github.com",
             "keywords": [
                 "rest"
             ],
-            "time": "2016-01-22 22:53:00"
+            "time": "2015-02-16 15:26:12"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3285,7 +3277,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/fee0435fa0e1f89d39c74ffed9032952bc1140ef",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/dc6645593ecf17b1eff624bf48079e8db09fdee6",
                 "reference": "295f5ee6264c843a49e6bff27c90e6783ea0921f",
                 "shasum": ""
             },
@@ -4006,8 +3998,6 @@
         "friendsofsymfony/user-bundle": 20,
         "braincrafted/bootstrap-bundle": 20,
         "twbs/bootstrap": 20,
-        "friendsofsymfony/rest-bundle": 20,
-        "jms/serializer-bundle": 20,
         "sleepness/shifter": 20
     },
     "prefer-stable": false,

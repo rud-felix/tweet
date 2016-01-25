@@ -1,0 +1,17 @@
+brd4_common_api_v1_login:
+    path:     /login
+    defaults: { _controller: Brd4CommonBundle:Api/V1/SecurityApi:login }
+    requirements:
+        _method: GET
+
+brd4_common_api_v1_logout:
+    path:     /logout
+    defaults: { _controller: Brd4CommonBundle:Api/V1/SecurityApi:logout }
+    requirements:
+        _method: GET
+
+brd4_common_api_v1_registration:
+    path:     /registration
+    defaults: { _controller: Brd4CommonBundle:Api/V1/SecurityApi:registration }
+    requirements:
+        _method: GET

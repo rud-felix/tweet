@@ -1,0 +1,33 @@
+brd4_user_api_v1_list:
+    path:     /users/pages/{page}
+    defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:userList, page: 1 }
+    requirements:
+        _method: GET
+        page: \d+
+
+brd4_user_api_v1_follow:
+    path:     /users/{id}/follow
+    defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:follow }
+    requirements:
+        _method: POST
+        id: \d+
+
+brd4_user_api_v1_followers:
+    path:     /users/followers/pages/{page}
+    defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:followerList, page: 1 }
+    requirements:
+        _method: GET
+        id: \d+
+
+brd4_user_api_v1_unfollow:
+    path:     /users/{id}/unfollow
+    defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:unfollow }
+    requirements:
+        _method: PUT
+        id: \d+
+
+brd4_user_api_v1_profile:
+    path:     /users/profile
+    defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:profile }
+    requirements:
+        _method: GET
