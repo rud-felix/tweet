@@ -5,3 +5,5 @@ Brd4\UserBundle\Model\User:
             expose: true
         username:
             expose: true
+        isFollow:
+            expose: true

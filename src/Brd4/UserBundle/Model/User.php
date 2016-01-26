@@ -13,4 +13,9 @@ class User
      * @var string
      */
     public $username;
+
+    /**
+     * @var boolean
+     */
+    public $isFollow;
 }

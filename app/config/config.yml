@@ -62,4 +62,4 @@ sensio_framework_extra:
 
 uecode_api_key:
     delivery: header #or query
-    parameter_name: api-key
+    parameter_name: apikey

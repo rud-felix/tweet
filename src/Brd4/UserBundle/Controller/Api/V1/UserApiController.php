@@ -4,6 +4,9 @@ namespace Brd4\UserBundle\Controller\Api\V1;
 
 use Brd4\CommonBundle\Controller\BaseApiController;
 use Brd4\UserBundle\Entity\User;
+use Brd4\UserBundle\Model\User as UserModel;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use FOS\RestBundle\Util\Codes;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations\View as RestView;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -33,18 +36,34 @@ class UserApiController extends BaseApiController
      *  }
      * )
      *
-     * @ParamConverter(name="user", class="Brd4\UserBundle\Entity\User")
-     *
-     * @param User $user
      * @param $page
-     *
      * @RestView
-     *
      * @return View
      */
-    public function userListAction(User $user, $page)
+    public function userListAction($page)
     {
+        try{
+            $pagination = $this->get('brd4.user.user')
+                ->getUsersWithMarkFollower(
+                    $this->getUser(),
+                    $page
+                )
+            ;
+            $result = $this->get('brd4.common.data_transfer_prepare')
+                ->serialize($pagination, UserModel::class, $format = 'json')
+            ;
+        } catch (\Exception $e) {
+            return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
+        }
 
+        return $this->view([
+            'total' => '',  // TODO: total count
+            'count' => $this->getParameter('user_list.item.count'), // TODO: count with find
+            'page' => $page,
+            'data' => $result
+        ],
+            Codes::HTTP_OK
+        );
     }
 
     /**
@@ -68,18 +87,33 @@ class UserApiController extends BaseApiController
      *  }
      * )
      *
-     * @ParamConverter(name="user", class="Brd4\UserBundle\Entity\User")
+     * @ParamConverter(name="follower", class="Brd4\UserBundle\Entity\User")
      *
-     * @param User $user
-     * @param $page
+     * @param User $follower
      *
      * @RestView
      *
      * @return View
      */
-    public function followAction(User $user, $page)
+    public function followAction(User $follower)
     {
+        /** @var User $user */
+        $user = $this->getUser();
 
+        if ($follower !== $user) {
+            $user->addFollower($follower);
+
+            $em = $this->getEntityManager();
+            $em->persist($user);
+
+            try {
+                $em->flush();
+            } catch (UniqueConstraintViolationException $e) {
+                return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
+            }
+        }
+
+        return $this->view([], Codes::HTTP_OK);
     }
 
     /**
@@ -109,7 +143,30 @@ class UserApiController extends BaseApiController
      */
     public function followerListAction($page)
     {
+        try{
+            $user = $this->getUser();
+            $pagination = $this->get('knp_paginator')
+                ->paginate(
+                    $user->getFollowers(),
+                    $page,
+                    $this->getParameter('followers_list.item.count')
+                )
+            ;
+            $result = $this->get('brd4.common.data_transfer_prepare')
+                ->serialize($pagination, UserModel::class, $format = 'json')
+            ;
+        } catch (\Exception $e) {
+            return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
+        }
 
+        return $this->view([
+            'total' => '',  // TODO: total count
+            'count' => $this->getParameter('followers_list.item.count'), // TODO: count with find
+            'page' => $page,
+            'data' => $result
+        ],
+            Codes::HTTP_OK
+        );
     }
 
     /**
@@ -133,15 +190,27 @@ class UserApiController extends BaseApiController
      *  }
      * )
      *
-     * @ParamConverter(name="user", class="Brd4\UserBundle\Entity\User")
+     * @ParamConverter(name="follower", class="Brd4\UserBundle\Entity\User")
      *
-     * @param User $user
+     * @param User $follower
      * @RestView
      * @return View
      */
-    public function unfollowAction(User $user)
+    public function unfollowAction(User $follower)
     {
+        try {
+            /** @var User $user */
+            $user = $this->getUser();
+            $user->removeFollower($follower);
 
+            $em = $this->getEntityManager();
+            $em->persist($user);
+            $em->flush();
+        } catch (\Exception $e) {
+            return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->view([], Codes::HTTP_OK);
     }
 
     /**

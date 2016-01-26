@@ -231,9 +231,16 @@ class MessageApiController extends BaseApiController
                 )
             ;
 
+//            $shifter = $this->get('sleepness.shifter');
+//            foreach ($pagination as $key => $value) {
+//                 $shifter->toDto($value->getUser(), new \Brd4\UserBundle\Model\User());
+//            }
+
             $result = $this->get('brd4.common.data_transfer_prepare')
                 ->serialize($pagination, MessageModel::class, $format = 'json')
             ;
+
+
         } catch (\Exception $e) {
             return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
         }

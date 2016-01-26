@@ -10,3 +10,4 @@ Brd4\MessageBundle\Model\Message:
             expose: true
         user:
             expose: true
+            type: Brd4\UserBundle\Model\User

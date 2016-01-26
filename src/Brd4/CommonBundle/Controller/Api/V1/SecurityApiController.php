@@ -59,7 +59,13 @@ class SecurityApiController extends BaseApiController
             return $this->view($e->getMessage(), Codes::HTTP_UNAUTHORIZED);
         }
 
-        return $this->view(['api-key' => $user->getApiKey()], Codes::HTTP_OK);
+        return $this->view([
+            'apiKey' => $user->getApiKey(),
+            'username' => $user->getUsername(),
+            'email' => $user->getEmail()
+        ],
+            Codes::HTTP_OK
+        );
     }
 
     /**
@@ -150,6 +156,7 @@ class SecurityApiController extends BaseApiController
             $shifter = $this->get('sleepness.shifter');
             /** @var User $user */
             $user = $shifter->fromDto($registration, new User());
+            $user->setEnabled(true);
 
             $em = $this->getEntityManager();
             $em->persist($user);
@@ -160,6 +167,12 @@ class SecurityApiController extends BaseApiController
             return $this->view(['error' => 'check_username_and_email'], Codes::HTTP_BAD_REQUEST);
         }
 
-        return $this->view(['api-key' => $user->getApiKey()],Codes::HTTP_OK);
+        return $this->view([
+            'apiKey' => $user->getApiKey(),
+            'username' => $user->getUsername(),
+            'email' => $user->getEmail()
+        ],
+            Codes::HTTP_OK
+        );
     }
 }

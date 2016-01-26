@@ -23,7 +23,7 @@ brd4_user_api_v1_unfollow:
     path:     /users/{id}/unfollow
     defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:unfollow }
     requirements:
-        _method: PUT
+        _method: POST
         id: \d+
 
 brd4_user_api_v1_profile:
