@@ -34,13 +34,14 @@
         "nelmio/api-doc-bundle": "^2.11",
         "sleepness/shifter": "dev-master",
         "nelmio/cors-bundle": "^1.4",
-        "uecode/api-key-bundle": "dev-master"
+        "uecode/api-key-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "hautelook/alice-bundle": "^1.1"
     },
     "minimum-stability": "dev",
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
-        "symfony/phpunit-bridge": "~2.7",
-        "hautelook/alice-bundle": "^0.2.0"
+        "symfony/phpunit-bridge": "~2.7"
     },
     "repositories": [
         {
@@ -89,12 +90,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
-    },
-    "config": {
-        "bin-dir": "bin",
-        "platform": {
-            "php": "5.5.0"
-        }
     },
     "extra": {
         "symfony-app-dir": "app",

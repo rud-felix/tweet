@@ -1,0 +1,80 @@
+Brd4\MessageBundle\Entity\Message:
+    message_{1..25}:
+        text: <text()>
+        user: @user_1
+
+    message_{1..25}:
+        text: <text()>
+        user: @user_2
+        
+    message_{1..25}:
+        text: <text()>
+        user: @user_3
+    
+    message_{1..25}:
+        text: <text()>
+        user: @user_4    
+    
+    message_{1..25}:
+        text: <text()>
+        user: @user_5
+        
+    message_{1..25}:
+        text: <text()>
+        user: @user_6
+                
+    message_{1..25}:
+        text: <text()>
+        user: @user_7
+                
+    message_{1..25}:
+        text: <text()>
+        user: @user_8
+                        
+    message_{1..25}:
+        text: <text()>
+        user: @user_9
+                        
+    message_{1..25}:
+        text: <text()>
+        user: @user_10
+        
+    message_{1..25}:
+        text: <text()>
+        user: @user_11
+        
+    message_{1..25}:
+        text: <text()>
+        user: @user_12
+
+    message_{1..25}:
+        text: <text()>
+        user: @user_13
+        
+    message_{1..25}:
+        text: <text()>
+        user: @user_14
+        
+    message_{1..25}:
+        text: <text()>
+        user: @user_15
+        
+    message_{1..25}:
+        text: <text()>
+        user: @user_16
+                
+    message_{1..25}:
+        text: <text()>
+        user: @user_17
+                
+    message_{1..25}:
+        text: <text()>
+        user: @user_18
+                        
+    message_{1..25}:
+        text: <text()>
+        user: @user_19
+          
+    message_{1..25}:
+        text: <text()>
+        user: @user_20

@@ -1,6 +1,24 @@
-Brd4\UserBundle\Entity\User;
-user:
-    email: user@gmail.com
-    plainPassword: 123456
-    enabled: true
-    roles: ['ROLE_USER']
+Brd4\UserBundle\Entity\User:
+    user_1:
+        email: user@gmail.com
+        username: user
+        plainPassword: 123456
+        enabled: true
+        roles: ['ROLE_USER']
+        followers: [@user_2, @user_3, @user_4, @user_5, @user_6, @user_8, @user_10, @user_16, @user_18, @user_17, @user_12]
+
+    user_2:
+        email: user2@gmail.com
+        username: user2
+        plainPassword: 123456
+        enabled: true
+        roles: ['ROLE_USER']
+        followers: [@user_3, @user_1, @user_8, @user_6, @user_5, @user_7, @user_10, @user_16, @user_18, @user_19, @user_14]
+
+    user_{3..20}:
+        email: user<current()>@gmail.com
+        username: user<current()>
+        plainPassword: 123456
+        enabled: true
+        roles: ['ROLE_USER']
+        followers: [@user_1, @user_2]

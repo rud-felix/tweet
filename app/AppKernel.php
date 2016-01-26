@@ -26,7 +26,7 @@ class AppKernel extends Kernel
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
-//            new Hautelook\AliceBundle\HautelookAliceBundle(),
+            new Hautelook\AliceBundle\HautelookAliceBundle(),
             new Brd4\UserBundle\Brd4UserBundle(),
             new Brd4\MessageBundle\Brd4MessageBundle(),
             new Brd4\CommonBundle\Brd4CommonBundle(),
