@@ -1,4 +1,12 @@
 /* Space out content a bit */
+.row-user {
+  padding-top: 20px;
+}
+
+.btn-follow-unfollow {
+  width: 100px;
+}
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;

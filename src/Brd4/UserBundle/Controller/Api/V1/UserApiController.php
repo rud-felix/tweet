@@ -265,4 +265,43 @@ class UserApiController extends BaseApiController
 
         return $this->view($result, Codes::HTTP_OK);
     }
+
+    /**
+     * Access URI /api/v1/users/{id}
+     *
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Returns user",
+     *  requirements={
+     *      {"name"="id",      "dataType"="integer",    "requirement"="true"}
+     *  },
+     *  output="Brd4\UserBundle\Model\User",
+     *  section="User API",
+     *  statusCodes={
+     *      200="Returned when request was handled with success",
+     *      400="Returned when bad request",
+     *      500="Returned when there is a server side error",
+     *  },
+     *  tags={
+     *      "beta" = "#10A54A"
+     *  }
+     * )
+     *
+     * @ParamConverter(name="user", class="Brd4\UserBundle\Entity\User")
+     * @param User $user
+     * @RestView
+     * @return View
+     */
+    public function geUserAction(User $user)
+    {
+        try {
+            $shifter = $this->get('sleepness.shifter');
+            $result = $shifter->toDto($user, new \Brd4\UserBundle\Model\User());
+        } catch (UniqueConstraintViolationException $e) {
+            return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->view($result, Codes::HTTP_OK);
+    }
+
 }

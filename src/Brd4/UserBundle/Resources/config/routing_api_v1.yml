@@ -31,3 +31,10 @@ brd4_user_api_v1_profile:
     defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:profile }
     requirements:
         _method: POST
+
+brd4_user_api_v1_get_user:
+    path:     /users/{id}
+    defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:geUser }
+    requirements:
+        _method: GET
+        id: \d+
