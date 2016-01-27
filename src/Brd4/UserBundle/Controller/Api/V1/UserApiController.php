@@ -4,6 +4,7 @@ namespace Brd4\UserBundle\Controller\Api\V1;
 
 use Brd4\CommonBundle\Controller\BaseApiController;
 use Brd4\UserBundle\Entity\User;
+use Brd4\UserBundle\Model\Profile;
 use Brd4\UserBundle\Model\User as UserModel;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use FOS\RestBundle\Util\Codes;
@@ -232,11 +233,36 @@ class UserApiController extends BaseApiController
      *  }
      * )
      *
+     * @ParamConverter(name="profile", class="Brd4\UserBundle\Model\Profile")
+     *
      * @RestView
+     * @param Profile $profile
      * @return View
      */
-    public function profileAction()
+    public function profileAction(Profile $profile)
     {
+        try {
+            /** @var User $user */
+            $user = $this->getUser();
 
+            $security = $this->get('security.password_encoder');
+            if (!$security->isPasswordValid($user, $profile->password)) {
+                return $this->view(['error' => 'password_error'], Codes::HTTP_UNAUTHORIZED);
+            }
+
+            $user->setUsername($profile->username);
+            $user->setEmail($profile->email);
+
+            $em = $this->getEntityManager();
+            $em->persist($user);
+            $em->flush();
+
+            $shifter = $this->get('sleepness.shifter');
+            $result = $shifter->toDto($user, new \Brd4\UserBundle\Model\User());
+        } catch (\Exception $e) {
+            return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);
+        }
+
+        return $this->view($result, Codes::HTTP_OK);
     }
 }

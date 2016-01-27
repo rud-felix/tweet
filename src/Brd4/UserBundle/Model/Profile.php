@@ -2,12 +2,12 @@
 
 namespace Brd4\UserBundle\Model;
 
-class User
+class Profile
 {
     /**
-     * @var integer
+     * @var string
      */
-    public $id;
+    public $email;
 
     /**
      * @var string
@@ -17,10 +17,5 @@ class User
     /**
      * @var string
      */
-    public $email;
-
-    /**
-     * @var boolean
-     */
-    public $isFollow;
+    public $password;
 }

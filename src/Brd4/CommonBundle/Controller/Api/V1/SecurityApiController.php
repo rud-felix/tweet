@@ -168,9 +168,7 @@ class SecurityApiController extends BaseApiController
         }
 
         return $this->view([
-            'apiKey' => $user->getApiKey(),
-            'username' => $user->getUsername(),
-            'email' => $user->getEmail()
+            'apiKey' => $user->getApiKey()
         ],
             Codes::HTTP_OK
         );

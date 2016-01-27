@@ -1,11 +1,12 @@
-Brd4\UserBundle\Model\User:
+Brd4\UserBundle\Model\Profile:
     exclusion_policy: All
     properties:
-        id:
-            expose: true
         email:
+            type: string
             expose: true
         username:
+            type: string
             expose: true
-        isFollow:
+        password:
+            type: string
             expose: true

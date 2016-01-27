@@ -30,4 +30,4 @@ brd4_user_api_v1_profile:
     path:     /users/profile
     defaults: { _controller: Brd4UserBundle:Api/V1/UserApi:profile }
     requirements:
-        _method: GET
+        _method: POST
