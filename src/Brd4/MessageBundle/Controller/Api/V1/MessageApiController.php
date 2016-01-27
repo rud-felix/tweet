@@ -111,8 +111,6 @@ class MessageApiController extends BaseApiController
             return $this->view($this->prepareViolationErrors($validationErrors), Codes::HTTP_BAD_REQUEST);
         }
 
-        // $this->denyAccessUnlessGranted("ROLE_USER"); // TODO: refactoring
-
         $shifter = $this->get('sleepness.shifter');
         $message = $shifter->fromDto($message, new Message());
 
@@ -167,12 +165,6 @@ class MessageApiController extends BaseApiController
      */
     public function searchAction($text, $page)
     {
-        //$this->denyAccessUnlessGranted("ROLE_USER");    // TODO: refactoring
-
-//        if (count($validationErrors) > 0) {
-//            return $this->view($this->prepareViolationErrors($validationErrors), Codes::HTTP_BAD_REQUEST);
-//        }
-
         try{
             $searchResult = $this->get('brd4.message.search')->search($text, $page);
             $result = $this->get('brd4.common.data_transfer_prepare')
@@ -220,8 +212,6 @@ class MessageApiController extends BaseApiController
      */
     public function followersMessageListAction($page)
     {
-        //$this->denyAccessUnlessGranted("ROLE_USER"); // TODO: refactoring
-
         try{
             $pagination = $this->get('brd4.message.repository.message')
                 ->findFollowersMessages(
@@ -231,15 +221,19 @@ class MessageApiController extends BaseApiController
                 )
             ;
 
-//            $shifter = $this->get('sleepness.shifter');
-//            foreach ($pagination as $key => $value) {
-//                 $shifter->toDto($value->getUser(), new \Brd4\UserBundle\Model\User());
-//            }
+            $shifter = $this->get('sleepness.shifter');
+            $serializer = $this->get('jms_serializer');
 
-            $result = $this->get('brd4.common.data_transfer_prepare')
-                ->serialize($pagination, MessageModel::class, $format = 'json')
-            ;
+            $result = [];
+            foreach ($pagination as $item) {
+                $messageDto = $shifter->toDto($item, new \Brd4\MessageBundle\Model\Message());
+                $userDto = $shifter->toDto($item->getUser(), new \Brd4\UserBundle\Model\User());
+                $messageDto->setUser($userDto);
 
+                // TODO: refactoring
+                $serializedData = $serializer->serialize($messageDto, $format = 'json');
+                $result[] = (array)json_decode($serializedData);
+            }
 
         } catch (\Exception $e) {
             return $this->view($e->getMessage(), Codes::HTTP_BAD_REQUEST);

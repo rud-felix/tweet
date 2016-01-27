@@ -8,9 +8,11 @@
 
 #### Requirements
 - PHP 5.5.x >=
-- ElasticSearch 1.7.4
+- ElasticSearch 1.7.4 
 
 #### Configuring
+Install ElasticSearch 
+` https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.4.deb`
 Install vendors
 ```sh
 $ composer install

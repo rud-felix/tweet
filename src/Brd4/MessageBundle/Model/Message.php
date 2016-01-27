@@ -3,6 +3,7 @@
 namespace Brd4\MessageBundle\Model;
 
 use JMS\Serializer\Annotation\Type;
+use Brd4\UserBundle\Model\User as UserModel;
 
 class Message
 {
@@ -25,4 +26,12 @@ class Message
      * @Type("\Brd4\UserBundle\Model\User")
      */
     public $user;
+
+    /**
+     * @param UserModel $user
+     */
+    public function setUser(UserModel $user)
+    {
+        $this->user = $user;
+    }
 }
