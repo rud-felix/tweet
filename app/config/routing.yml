@@ -14,5 +14,5 @@ NelmioApiDocBundle:
 
 brd4_api:
     type: rest
-    resource: "api.yml"
+    resource: "routing_api.yml"
     prefix:   /api

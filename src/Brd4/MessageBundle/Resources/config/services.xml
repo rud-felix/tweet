@@ -6,14 +6,22 @@
 
     <parameters>
         <parameter key="brd4.message.search.class">Brd4\MessageBundle\Search</parameter>
+        <parameter key="brd4.message.message_controller.class">Brd4\MessageBundle\Controller\MessageController</parameter>
+        <parameter key="brd4.message.api.v1.message_api_controller.class">Brd4\MessageBundle\Controller\Api\V1\MessageApiController</parameter>
     </parameters>
 
     <services>
+
         <service id="brd4.message.search" class="%brd4.message.search.class%">
             <argument type="service" id="fos_elastica.finder.search" />
             <argument type="service" id="knp_paginator" />
             <argument>%search.item.count%%</argument>
         </service>
+
+        <service id="brd4.message.message_controller" class="%brd4.message.message_controller.class%" />
+
+        <service id="brd4.message.api.v1.message_controller" class="%brd4.message.api.v1.message_api_controller.class%" />
+
     </services>
 
 </container>

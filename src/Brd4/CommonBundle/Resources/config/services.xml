@@ -6,13 +6,24 @@
 
     <parameters>
         <parameter key="brd4.common.data_transfer_prepare.class">Brd4\CommonBundle\DataTransferPrepare</parameter>
+        <parameter key="brd4.common.base_api_controller.class">Brd4\CommonBundle\Controller\BaseApiController</parameter>
+        <parameter key="brd4.common.base_controller.class">Brd4\CommonBundle\Controller\BaseController</parameter>
+        <parameter key="brd4.common.api.v1.security_controller.class">Brd4\CommonBundle\Controller\Api\V1\SecurityApiController</parameter>
     </parameters>
 
     <services>
+
         <service id="brd4.common.data_transfer_prepare" class="%brd4.common.data_transfer_prepare.class%">
             <property name="serializer" type="service" id="jms_serializer.serializer" />
             <property name="shifter" type="service" id="sleepness.shifter" />
         </service>
+
+        <service id="brd4.common.base_api_controller" class="%brd4.common.base_api_controller.class%" />
+
+        <service id="brd4.common.base_controller" class="%brd4.common.base_controller.class%" />
+
+        <service id="brd4.common.api.v1.security_controller" class="%brd4.common.api.v1.security_controller.class%" />
+
     </services>
 
 </container>

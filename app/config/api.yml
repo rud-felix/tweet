@@ -1,3 +1,0 @@
-api_v1:
-    resource: "api_v1.yml"
-    prefix: /v1
